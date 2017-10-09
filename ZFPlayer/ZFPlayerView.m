@@ -86,7 +86,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 /** slider预览图 */
 @property (nonatomic, strong) UIImage                *thumbImg;
 /** 亮度view */
-//@property (nonatomic, strong) ZFBrightnessView       *brightnessView;
+@property (nonatomic, strong) ZFBrightnessView       *brightnessView;
 /** 视频填充模式 */
 @property (nonatomic, copy) NSString                 *videoGravity;
 
@@ -694,8 +694,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
         // 这个地方加判断是为了从全屏的一侧,直接到全屏的另一侧不用修改限制,否则会出错;
         if (currentOrientation == UIInterfaceOrientationPortrait) {
             [self removeFromSuperview];
-//            ZFBrightnessView *brightnessView = [ZFBrightnessView sharedBrightnessView];
-//            [[UIApplication sharedApplication].keyWindow insertSubview:self belowSubview:brightnessView];
+            ZFBrightnessView *brightnessView = [ZFBrightnessView sharedBrightnessView];
+            [[UIApplication sharedApplication].keyWindow insertSubview:self belowSubview:brightnessView];
             [self mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.width.equalTo(@(ScreenHeight));
                 make.height.equalTo(@(ScreenWidth));
@@ -817,25 +817,25 @@ typedef NS_ENUM(NSInteger, PanDirection){
                     [collectionView scrollToItemAtIndexPath:self.indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
                 }
             }
-//            [self.brightnessView removeFromSuperview];
-//            [[UIApplication sharedApplication].keyWindow addSubview:self.brightnessView];
-//            [self.brightnessView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.width.height.mas_equalTo(155);
-//                make.leading.mas_equalTo((ScreenWidth-155)/2);
-//                make.top.mas_equalTo((ScreenHeight-155)/2);
-//            }];
+            [self.brightnessView removeFromSuperview];
+            [[UIApplication sharedApplication].keyWindow addSubview:self.brightnessView];
+            [self.brightnessView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.mas_equalTo(155);
+                make.leading.mas_equalTo((ScreenWidth-155)/2);
+                make.top.mas_equalTo((ScreenHeight-155)/2);
+            }];
         } else {
             if (currentOrientation == UIInterfaceOrientationLandscapeRight) {
                 [self toOrientation:UIInterfaceOrientationLandscapeRight];
             } else if (currentOrientation == UIDeviceOrientationLandscapeLeft){
                 [self toOrientation:UIInterfaceOrientationLandscapeLeft];
             }
-//            [self.brightnessView removeFromSuperview];
-//            [self addSubview:self.brightnessView];
-//            [self.brightnessView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.center.mas_equalTo(self);
-//                make.width.height.mas_equalTo(155);
-//            }];
+            [self.brightnessView removeFromSuperview];
+            [self addSubview:self.brightnessView];
+            [self.brightnessView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.center.mas_equalTo(self);
+                make.width.height.mas_equalTo(155);
+            }];
             
         }
     }
@@ -1424,12 +1424,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
     return _imageGenerator;
 }
 
-//- (ZFBrightnessView *)brightnessView {
-//    if (!_brightnessView) {
-//        _brightnessView = [ZFBrightnessView sharedBrightnessView];
-//    }
-//    return _brightnessView;
-//}
+- (ZFBrightnessView *)brightnessView {
+    if (!_brightnessView) {
+        _brightnessView = [ZFBrightnessView sharedBrightnessView];
+        _brightnessView.userInteractionEnabled = NO;
+    }
+    return _brightnessView;
+}
 
 - (NSString *)videoGravity {
     if (!_videoGravity) {
