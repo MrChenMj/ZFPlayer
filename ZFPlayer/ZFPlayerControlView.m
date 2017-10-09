@@ -691,7 +691,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         _bottomImageView.userInteractionEnabled = YES;
         _bottomImageView.alpha                  = 0;
         _bottomImageView.image                  = ZFPlayerImage(@"ZFPlayer_bottom_shadow");
-        _bottomImageView.backgroundColor = [UIColor redColor];
+//        _bottomImageView.backgroundColor = [UIColor redColor];
     }
     return _bottomImageView;
 }
