@@ -1164,7 +1164,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
  *  @param value void
  */
 - (void)verticalMoved:(CGFloat)value {
-    self.isVolume ? (self.volumeViewSlider.value -= value / 10000) : ([UIScreen mainScreen].brightness -= value / 10000);
+//    self.isVolume ? (self.volumeViewSlider.value -= value / 10000) : ([UIScreen mainScreen].brightness -= value / 10000);亮度
+    self.isVolume ? (self.volumeViewSlider.value -= value / 10000):0;
 }
 
 /**
