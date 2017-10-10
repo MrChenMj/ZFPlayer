@@ -33,13 +33,16 @@
 - (void)zf_playerBackAction;
 /** 分享按钮事件 */
 - (void)mj_playerShareAction;
+/** 下一个按钮事件 */
+- (void)mj_playerNextAction;
+/** 截图按钮事件 */
+- (void)mj_playerScreenShotActionByIsChose:(BOOL)isChose;
 /** 下载视频 */
 - (void)zf_playerDownload:(NSString *)url;
 /** 控制层即将显示 */
 - (void)zf_playerControlViewWillShow:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
 /** 控制层即将隐藏 */
 - (void)zf_playerControlViewWillHidden:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
-
 @end
 
 // playerLayer的填充模式（默认：等比例填充，直到一个维度到达区域边界）

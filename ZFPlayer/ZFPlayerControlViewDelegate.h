@@ -32,16 +32,20 @@
 @optional
 /** 返回按钮事件 */
 - (void)zf_controlView:(UIView *)controlView backAction:(UIButton *)sender;
-/** cell播放中小屏状态 关闭按钮事件 */
-- (void)zf_controlView:(UIView *)controlView closeAction:(UIButton *)sender;
 /** 分享按钮事件 */
 - (void)mj_controlView:(UIView *)controlView shareAction:(UIButton *)sender;
+/** 下一个按钮事件 */
+- (void)mj_controlView:(UIView *)controlView nextAction:(UIButton *)sender;
+/** cell播放中小屏状态 关闭按钮事件 */
+- (void)zf_controlView:(UIView *)controlView closeAction:(UIButton *)sender;
 /** 播放按钮事件 */
 - (void)zf_controlView:(UIView *)controlView playAction:(UIButton *)sender;
 /** 全屏按钮事件 */
 - (void)zf_controlView:(UIView *)controlView fullScreenAction:(UIButton *)sender;
 /** 锁定屏幕方向按钮时间 */
 - (void)zf_controlView:(UIView *)controlView lockScreenAction:(UIButton *)sender;
+/** 截图屏幕方向按钮时间 */
+- (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender;
 /** 重播按钮事件 */
 - (void)zf_controlView:(UIView *)controlView repeatPlayAction:(UIButton *)sender;
 /** 中间播放按钮事件 */
@@ -66,3 +70,4 @@
 - (void)zf_controlViewWillHidden:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
 
 @end
+

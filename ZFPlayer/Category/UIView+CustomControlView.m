@@ -31,11 +31,11 @@
 }
 
 - (id<ZFPlayerControlViewDelagate>)delegate {
-   return objc_getAssociatedObject(self, _cmd);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-/** 
- * 设置播放模型 
+/**
+ * 设置播放模型
  */
 - (void)zf_playerModel:(ZFPlayerModel *)playerModel {}
 
@@ -98,7 +98,8 @@
  * 锁定屏幕方向按钮状态
  */
 - (void)zf_playerLockBtnState:(BOOL)state {}
-
+/** 截图屏幕方向按钮状态 */
+- (void)mj_screenshotBtnState:(BOOL)state {}
 /**
  * 加载的菊花
  */
@@ -157,3 +158,4 @@
 - (void)zf_playerCellPlay {}
 
 @end
+

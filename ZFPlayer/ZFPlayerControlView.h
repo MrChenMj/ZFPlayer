@@ -25,6 +25,7 @@
 #import "ASValueTrackingSlider.h"
 #import "ZFPlayer.h"
 
-@interface ZFPlayerControlView : UIView 
+@interface ZFPlayerControlView : UIView
 
 @end
+
