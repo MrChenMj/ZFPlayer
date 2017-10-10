@@ -426,8 +426,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 }
 - (void)screenshotBtnClick:(UIButton *)sender {
     sender.selected = !sender.selected;
-    self.showing = YES;
-    [self zf_playerHideControlView];
+    [self lockScrrenBtnClick:self.lockBtn];
     if ([self.delegate respondsToSelector:@selector(mj_controlView:screenshotAction:)]) {
         [self.delegate mj_controlView:self screenshotAction:sender];
     }
@@ -543,7 +542,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
  */
 - (void)onDeviceOrientationChange {
     if (ZFPlayerShared.isLockScreen) { return; }
-    self.lockBtn.hidden         = !self.isFullScreen;
+    //    self.lockBtn.hidden         = !self.isFullScreen;
     self.fullScreenBtn.selected = self.isFullScreen;
     self.screenshotBtn.hidden = !self.isFullScreen;
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
@@ -559,7 +558,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         self.shrink             = NO;
     }
     self.fullScreen             = YES;
-    self.lockBtn.hidden         = !self.isFullScreen;
+    //    self.lockBtn.hidden         = !self.isFullScreen;
     self.screenshotBtn.hidden = !self.isFullScreen;
     self.nextBtn.hidden = !self.isFullScreen;
     self.fullScreenBtn.selected = self.isFullScreen;
@@ -593,7 +592,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
  */
 - (void)setOrientationPortraitConstraint {
     self.fullScreen             = NO;
-    self.lockBtn.hidden         = !self.isFullScreen;
+    //    self.lockBtn.hidden         = !self.isFullScreen;
     self.screenshotBtn.hidden = !self.isFullScreen;
     self.fullScreenBtn.selected = self.isFullScreen;
     self.nextBtn.hidden = !self.isFullScreen;
@@ -632,7 +631,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         self.bottomImageView.alpha = 1;
     }
     self.backgroundColor           = RGBA(0, 0, 0, 0.3);
-    self.lockBtn.alpha             = 1;
+    //    self.lockBtn.alpha             = 1;
     self.screenshotBtn.alpha =1;
     if (self.isCellVideo) {
         self.shrink                = NO;
@@ -763,7 +762,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         [_lockBtn setImage:ZFPlayerImage(@"ZFPlayer_unlock-nor") forState:UIControlStateNormal];
         [_lockBtn setImage:ZFPlayerImage(@"ZFPlayer_lock-nor") forState:UIControlStateSelected];
         [_lockBtn addTarget:self action:@selector(lockScrrenBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        
+        _lockBtn.hidden = YES;
     }
     return _lockBtn;
 }
@@ -833,7 +832,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         
         [_videoSlider setThumbImage:ZFPlayerImage(@"ZFPlayer_slider") forState:UIControlStateNormal];
         _videoSlider.maximumValue          = 1;
-        _videoSlider.minimumTrackTintColor = [UIColor whiteColor];
+        _videoSlider.minimumTrackTintColor = [UIColor colorWithRed:223/255.0 green:74/255.0 blue:78/255.0 alpha:1.0];//[UIColor whiteColor];
         _videoSlider.maximumTrackTintColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
         
         // slider开始滑动事件
@@ -1021,7 +1020,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     self.shrink                      = NO;
     self.showing                     = NO;
     self.playeEnd                    = NO;
-    self.lockBtn.hidden              = !self.isFullScreen;
+    //    self.lockBtn.hidden              = !self.isFullScreen;
     self.screenshotBtn.hidden        = !self.isFullScreen;
     self.failBtn.hidden              = YES;
     self.placeholderImageView.alpha  = 1;
