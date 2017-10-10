@@ -1495,8 +1495,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if (ZFPlayerShared.isLockScreen) {
         [self unLockTheScreen];
     } else {
-        if ([self.delegate respondsToSelector:@selector(mj_playerShareAction)]) {
-            [self.delegate mj_playerShareAction];
+        if ([self.delegate respondsToSelector:@selector(mj_playerShareActionByControlView:)]) {
+            [self.delegate mj_playerShareActionByControlView:controlView];
         }
     }
 }
@@ -1512,8 +1512,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 - (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(mj_playerScreenShotActionByIsChose:)]) {
-        [self.delegate mj_playerScreenShotActionByIsChose:sender.selected];
+    if ([self.delegate respondsToSelector:@selector(mj_playerScreenShotActionByIsChose:controlView:)]) {
+        [self.delegate mj_playerScreenShotActionByIsChose:sender.selected controlView:controlView];
     }
 }
 

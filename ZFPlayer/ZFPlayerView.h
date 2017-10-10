@@ -32,11 +32,11 @@
 /** 返回按钮事件 */
 - (void)zf_playerBackAction;
 /** 分享按钮事件 */
-- (void)mj_playerShareAction;
+- (void)mj_playerShareActionByControlView:(UIView *)controlView;;
 /** 下一个按钮事件 */
 - (void)mj_playerNextAction;
 /** 截图按钮事件 */
-- (void)mj_playerScreenShotActionByIsChose:(BOOL)isChose;
+- (void)mj_playerScreenShotActionByIsChose:(BOOL)isChose controlView:(UIView *)controlView;
 /** 下载视频 */
 - (void)zf_playerDownload:(NSString *)url;
 /** 控制层即将显示 */
