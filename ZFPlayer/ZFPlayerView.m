@@ -1512,8 +1512,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 - (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(mj_playerScreenShotActionByIsChose:controlView:)]) {
-        [self.delegate mj_playerScreenShotActionByIsChose:sender.selected controlView:controlView];
+    if ([self.delegate respondsToSelector:@selector(mj_playerScreenShotActionByIsChose:controlView:imeges:)]) {
+        [self.delegate mj_playerScreenShotActionByIsChose:sender.selected controlView:controlView imeges:[self thumbnailImage]];
     }
 }
 
@@ -1613,7 +1613,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
         
         if (totalTime > 0) { // 当总时长 > 0时候才能拖动slider
             if (self.isFullScreen && self.hasPreviewView) {
-                
                 [self.imageGenerator cancelAllCGImageGeneration];
                 self.imageGenerator.appliesPreferredTrackTransform = YES;
                 self.imageGenerator.maximumSize = CGSizeMake(100, 56);
@@ -1669,5 +1668,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 
 #pragma clang diagnostic pop
-
+- (UIImage*) thumbnailImage {
+    self.imageGenerator.appliesPreferredTrackTransform = YES;
+    CMTime times = self.player.currentTime;
+    NSError *error = nil;
+    CMTime actualTime;
+    CGImageRef image = [self.imageGenerator copyCGImageAtTime:times actualTime:&actualTime error:&error];
+    UIImage *img = [[UIImage alloc] initWithCGImage:image];
+    return img;
+}
 @end

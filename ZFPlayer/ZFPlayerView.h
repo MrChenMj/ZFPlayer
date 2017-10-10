@@ -36,7 +36,7 @@
 /** 下一个按钮事件 */
 - (void)mj_playerNextAction;
 /** 截图按钮事件 */
-- (void)mj_playerScreenShotActionByIsChose:(BOOL)isChose controlView:(UIView *)controlView;
+- (void)mj_playerScreenShotActionByIsChose:(BOOL)isChose controlView:(UIView *)controlView imeges:(UIImage *)image;
 /** 下载视频 */
 - (void)zf_playerDownload:(NSString *)url;
 /** 控制层即将显示 */
