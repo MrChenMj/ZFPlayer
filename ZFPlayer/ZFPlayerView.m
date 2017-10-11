@@ -1490,13 +1490,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
         }
     }
 }
-- (void)mj_controlView:(UIView *)controlView shareAction:(UIButton *)sender
+- (void)mj_controlView:(UIView *)controlView shareAction:(UIButton *)sender isPortrait:(BOOL)isPortrait
 {
     if (ZFPlayerShared.isLockScreen) {
         [self unLockTheScreen];
     } else {
-        if ([self.delegate respondsToSelector:@selector(mj_playerShareActionByControlView:)]) {
-            [self.delegate mj_playerShareActionByControlView:controlView];
+        if ([self.delegate respondsToSelector:@selector(mj_playerShareActionByControlView: isPortrait:)]) {
+            [self.delegate mj_playerShareActionByControlView:controlView isPortrait:isPortrait];
         }
     }
 }

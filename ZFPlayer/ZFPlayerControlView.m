@@ -406,12 +406,12 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     // 在cell上并且是竖屏时候响应关闭事件
     if (self.isCellVideo && orientation == UIInterfaceOrientationPortrait) {
-        if ([self.delegate respondsToSelector:@selector(mj_controlView:shareAction:)]) {
-            [self.delegate mj_controlView:self shareAction:sender];
+        if ([self.delegate respondsToSelector:@selector(mj_controlView:shareAction:isPortrait:)]) {
+            [self.delegate mj_controlView:self shareAction:sender isPortrait:YES];
         }
     } else {
-        if ([self.delegate respondsToSelector:@selector(mj_controlView:shareAction:)]) {
-            [self.delegate mj_controlView:self shareAction:sender];
+        if ([self.delegate respondsToSelector:@selector(mj_controlView:shareAction:isPortrait:)]) {
+            [self.delegate mj_controlView:self shareAction:sender isPortrait:NO];
         }
     }
 }
@@ -643,6 +643,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 {
     if (self.isFullScreen) {
         self.topImageView.alpha    = alpha;
+        self.screenshotBtn.alpha = alpha;
     }else
     {
         self.topImageView.alpha    = 1;

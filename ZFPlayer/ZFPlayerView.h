@@ -32,7 +32,7 @@
 /** 返回按钮事件 */
 - (void)zf_playerBackAction;
 /** 分享按钮事件 */
-- (void)mj_playerShareActionByControlView:(UIView *)controlView;;
+- (void)mj_playerShareActionByControlView:(UIView *)controlView isPortrait:(BOOL)isPortrait;
 /** 下一个按钮事件 */
 - (void)mj_playerNextAction;
 /** 截图按钮事件 */

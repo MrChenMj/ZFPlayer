@@ -33,7 +33,7 @@
 /** 返回按钮事件 */
 - (void)zf_controlView:(UIView *)controlView backAction:(UIButton *)sender;
 /** 分享按钮事件 */
-- (void)mj_controlView:(UIView *)controlView shareAction:(UIButton *)sender;
+- (void)mj_controlView:(UIView *)controlView shareAction:(UIButton *)sender isPortrait:(BOOL)isPortrait;
 /** 下一个按钮事件 */
 - (void)mj_controlView:(UIView *)controlView nextAction:(UIButton *)sender;
 /** cell播放中小屏状态 关闭按钮事件 */
