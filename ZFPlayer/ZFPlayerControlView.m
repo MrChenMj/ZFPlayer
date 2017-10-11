@@ -663,7 +663,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     {
         if(self.isFullScreen)
         {
-            self.topImageView.alpha       = self.playeEnd;
+            self.topImageView.alpha   =  self.bottomImageView.alpha;
+            self.screenshotBtn.alpha = self.topImageView.alpha;
         }
     }
 }

@@ -251,11 +251,16 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (void)addPlayerToFatherView:(UIView *)view {
     // 这里应该添加判断，因为view有可能为空，当view为空时[view addSubview:self]会crash
     if (view) {
-        [self removeFromSuperview];
-        [view addSubview:self];
-        [self mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_offset(UIEdgeInsetsZero);
-        }];
+        if (self.isFullScreen && self.repeatToPlay) {
+            [self.controlView zf_playerShowOrHideControlView];
+        }else
+        {
+            [self removeFromSuperview];
+            [view addSubview:self];
+            [self mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.edges.mas_offset(UIEdgeInsetsZero);
+            }];
+        }
     }
 }
 
@@ -1270,7 +1275,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 
 #pragma mark - Setter
-
 /**
  *  videoURL的setter方法
  *
@@ -1278,19 +1282,19 @@ typedef NS_ENUM(NSInteger, PanDirection){
  */
 - (void)setVideoURL:(NSURL *)videoURL {
     _videoURL = videoURL;
-    
     // 每次加载视频URL都设置重播为NO
+    if (self.isFullScreen && self.repeatToPlay) {
+        
+    }else
+    {
+        // 添加手势
+        [self createGesture];
+    }
     self.repeatToPlay = NO;
     self.playDidEnd   = NO;
-    
     // 添加通知
     [self addNotifications];
-    
     self.isPauseByUser = YES;
-    
-    // 添加手势
-    [self createGesture];
-    
 }
 
 /**
@@ -1402,7 +1406,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 - (void)setPlayerModel:(ZFPlayerModel *)playerModel {
     _playerModel = playerModel;
-    
     if (playerModel.seekTime) { self.seekTime = playerModel.seekTime; }
     [self.controlView zf_playerModel:playerModel];
     // 分辨率
@@ -1694,3 +1697,4 @@ typedef NS_ENUM(NSInteger, PanDirection){
     return img;
 }
 @end
+
