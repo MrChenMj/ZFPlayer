@@ -404,8 +404,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 {
     // 状态条的方向旋转的方向,来判断当前屏幕的方向
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    // 在cell上并且是竖屏时候响应关闭事件
-    if (self.isCellVideo && orientation == UIInterfaceOrientationPortrait) {
+    if (orientation == UIInterfaceOrientationPortrait) {
         if ([self.delegate respondsToSelector:@selector(mj_controlView:shareAction:isPortrait:)]) {
             [self.delegate mj_controlView:self shareAction:sender isPortrait:YES];
         }
