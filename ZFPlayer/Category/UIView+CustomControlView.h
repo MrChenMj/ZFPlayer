@@ -65,7 +65,7 @@
 /**
  * 播放完了
  */
-- (void)zf_playerPlayEnd;
+- (void)zf_playerPlayEndByIsRepeat:(BOOL)isRepeat;
 
 /**
  * 是否有下载功能

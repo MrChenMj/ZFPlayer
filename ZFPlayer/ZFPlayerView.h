@@ -29,6 +29,8 @@
 
 @protocol ZFPlayerDelegate <NSObject>
 @optional
+/** 播放结束事件 */
+- (void)mj_moviePlayDidEnd;
 /** 返回按钮事件 */
 - (void)zf_playerBackAction;
 /** 分享按钮事件 */
@@ -37,6 +39,7 @@
 - (void)mj_playerNextAction;
 /** 截图按钮事件 */
 - (void)mj_playerScreenShotActionByIsChose:(BOOL)isChose controlView:(UIView *)controlView imeges:(UIImage *)image;
+
 /** 下载视频 */
 - (void)zf_playerDownload:(NSString *)url;
 /** 控制层即将显示 */
@@ -67,6 +70,8 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 @property (nonatomic, assign) ZFPlayerLayerGravity    playerLayerGravity;
 /** 是否有下载功能(默认是关闭) */
 @property (nonatomic, assign) BOOL                    hasDownload;
+/** 是否有重播功能(默认是关闭) */
+@property (nonatomic, assign) BOOL                    isRepeat;
 /** 是否开启预览图 */
 @property (nonatomic, assign) BOOL                    hasPreviewView;
 /** 设置代理 */

@@ -1223,8 +1223,10 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 }
 
 /** 播放完了 */
-- (void)zf_playerPlayEnd {
-    self.repeatBtn.hidden = NO;
+- (void)zf_playerPlayEndByIsRepeat:(BOOL)isRepeat {
+    if (isRepeat) {
+        self.repeatBtn.hidden = NO;
+    }
     self.playeEnd         = YES;
     self.showing          = NO;
     // 隐藏controlView
