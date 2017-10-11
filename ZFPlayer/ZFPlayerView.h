@@ -126,5 +126,8 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
   * 暂停
  */
 - (void)pause;
-
+/**
+ * 截图按钮
+ */
+- (void)screenshotByIsRead:(BOOL)isRead;
 @end

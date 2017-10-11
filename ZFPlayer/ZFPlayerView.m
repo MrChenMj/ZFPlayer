@@ -333,7 +333,16 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.isPauseByUser = YES;
     [_player pause];
 }
-
+/**
+ * 截图按钮
+ */
+- (void)screenshotByIsRead:(BOOL)isRead
+{
+    [self.controlView mj_screenshotBtnState:isRead];
+    if (ZFPlayerShared.isLockScreen) {
+        [self unLockTheScreen];
+    }
+}
 #pragma mark - Private Method
 
 /**
