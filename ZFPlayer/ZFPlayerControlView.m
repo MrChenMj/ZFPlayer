@@ -1293,6 +1293,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 /** 截图屏幕方向按钮状态 */
 - (void)mj_screenshotBtnState:(BOOL)state {
     self.screenshotBtn.selected = state;
+    [self zf_playerShowOrHideControlView];
 }
 /** 下载按钮状态 */
 - (void)zf_playerDownloadBtnState:(BOOL)state {
