@@ -252,7 +252,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     // 这里应该添加判断，因为view有可能为空，当view为空时[view addSubview:self]会crash
     if (view) {
         if (self.isFullScreen && self.repeatToPlay) {
-            [self.controlView zf_playerShowOrHideControlView];
+            //            [self.controlView zf_playerShowOrHideControlView];
         }else
         {
             [self removeFromSuperview];
@@ -263,7 +263,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
         }
     }
 }
-
 /**
  *  重置player
  */
@@ -317,8 +316,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [self resetPlayer];
     self.playerModel = playerModel;
     [self configZFPlayer];
+    [self performSelector:@selector(showControlView) withObject:nil afterDelay:0.8];
 }
-
+- (void)showControlView
+{
+    // 显示控制层
+    [self.controlView zf_playerShowControlView];
+}
 /**
  *  播放
  */
