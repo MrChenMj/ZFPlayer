@@ -135,5 +135,10 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
  * 截图按钮
  */
 - (void)screenshotByIsRead:(BOOL)isRead;
+/**
+ * 设置横屏按钮
+ */
+- (void)updateOrientationPortrait;
+
 @end
 
