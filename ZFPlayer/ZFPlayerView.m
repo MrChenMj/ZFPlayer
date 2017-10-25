@@ -1518,6 +1518,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if (ZFPlayerShared.isLockScreen) {
         [self unLockTheScreen];
     } else {
+            [self setOrientationPortraitConstraint];
         if ([self.delegate respondsToSelector:@selector(mj_playerShareActionByControlView: isPortrait:)]) {
             [self.delegate mj_playerShareActionByControlView:controlView isPortrait:isPortrait];
         }
