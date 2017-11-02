@@ -1054,6 +1054,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         [_screenshotBtn setImage:ZFPlayerImage(BtnImage_Screenshot) forState:UIControlStateNormal];
         [_screenshotBtn setImage:ZFPlayerImage(@"dd") forState:UIControlStateSelected];
         _screenshotBtn.selected = NO;
+        self.mute = YES;
     }
 
 }
