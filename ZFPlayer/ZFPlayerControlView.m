@@ -27,6 +27,11 @@
 #import "UIView+CustomControlView.h"
 #import "MMMaterialDesignSpinner.h"
 
+#define BtnImage_Screenshot @"ZFPlayer_Screenshot"
+
+#define OrBtnImage_N_Screenshot @"img_colose_volume"
+#define OrBtnImage_S_Screenshot @"img_open_volume"
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored"-Wdeprecated-declarations"
 
@@ -425,10 +430,18 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 }
 - (void)screenshotBtnClick:(UIButton *)sender {
     sender.selected = !sender.selected;
-    [self lockScrrenBtnClick:self.lockBtn];
-    if ([self.delegate respondsToSelector:@selector(mj_controlView:screenshotAction:)]) {
-        [self.delegate mj_controlView:self screenshotAction:sender];
+    if (!self.isFullScreen) {
+        if ([self.delegate respondsToSelector:@selector(mj_controlView:screenshotMuteAction:)]) {
+            [self.delegate mj_controlView:self screenshotMuteAction:sender];
+        }
+    }else
+    {
+        [self lockScrrenBtnClick:self.lockBtn];
+        if ([self.delegate respondsToSelector:@selector(mj_controlView:screenshotAction:)]) {
+            [self.delegate mj_controlView:self screenshotAction:sender];
+        }
     }
+
 }
 - (void)nextBtnClick:(UIButton *)sender
 {
@@ -543,7 +556,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (ZFPlayerShared.isLockScreen) { return; }
     //    self.lockBtn.hidden         = !self.isFullScreen;
     self.fullScreenBtn.selected = self.isFullScreen;
-    self.screenshotBtn.hidden = !self.isFullScreen;
+    [self updateScreenshotBtn];
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown || orientation == UIDeviceOrientationUnknown || orientation == UIDeviceOrientationPortraitUpsideDown) { return; }
     if (!self.isShrink && !self.isPlayEnd && !self.showing) {
@@ -558,7 +571,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     }
     self.fullScreen             = YES;
     //    self.lockBtn.hidden         = !self.isFullScreen;
-    self.screenshotBtn.hidden = !self.isFullScreen;
+    [self updateScreenshotBtn];
     self.nextBtn.hidden = !self.isFullScreen;
     self.fullScreenBtn.selected = self.isFullScreen;
     [self.backBtn setImage:ZFPlayerImage(@"ZFPlayer_back_full") forState:UIControlStateNormal];
@@ -592,7 +605,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 - (void)setOrientationPortraitConstraint {
     self.fullScreen             = NO;
     //    self.lockBtn.hidden         = !self.isFullScreen;
-    self.screenshotBtn.hidden = !self.isFullScreen;
+    [self updateScreenshotBtn];
     self.fullScreenBtn.selected = self.isFullScreen;
     self.nextBtn.hidden = !self.isFullScreen;
     [self.backBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -770,8 +783,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 - (UIButton *)screenshotBtn {
     if (!_screenshotBtn) {
         _screenshotBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_screenshotBtn setImage:ZFPlayerImage(@"ZFPlayer_Screenshot") forState:UIControlStateNormal];
-        [_screenshotBtn setImage:ZFPlayerImage(@"000") forState:UIControlStateSelected];
+        [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_N_Screenshot) forState:UIControlStateNormal];
+        [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_S_Screenshot) forState:UIControlStateSelected];
         [_screenshotBtn addTarget:self action:@selector(screenshotBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _screenshotBtn;
@@ -1022,12 +1035,23 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     self.showing                     = NO;
     self.playeEnd                    = NO;
     //    self.lockBtn.hidden              = !self.isFullScreen;
-    self.screenshotBtn.hidden        = !self.isFullScreen;
+    [self updateScreenshotBtn];
     self.failBtn.hidden              = YES;
     self.placeholderImageView.alpha  = 1;
     [self hideControlView];
 }
+- (void)updateScreenshotBtn
+{
+    if (!self.isFullScreen) {
+        [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_N_Screenshot) forState:UIControlStateNormal];
+        [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_S_Screenshot) forState:UIControlStateSelected];
+    }else
+    {
+        [_screenshotBtn setImage:ZFPlayerImage(BtnImage_Screenshot) forState:UIControlStateNormal];
+        [_screenshotBtn setImage:ZFPlayerImage(@"dd") forState:UIControlStateSelected];
+    }
 
+}
 - (void)zf_playerResetControlViewForResolution {
     self.fastView.hidden        = YES;
     self.repeatBtn.hidden       = YES;

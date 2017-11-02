@@ -51,6 +51,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (nonatomic, strong) id                     timeObserve;
 /** 滑杆 */
 @property (nonatomic, strong) UISlider               *volumeViewSlider;
+@property (nonatomic, strong) UISlider               *volumeViewRetSlider;
 /** 用来保存快进的总时长 */
 @property (nonatomic, assign) CGFloat                sumTime;
 /** 定义一个实例变量，保存枚举值 */
@@ -1502,7 +1503,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         [self configZFPlayer];
     }
 }
-
+//响应返回协议
 - (void)zf_controlView:(UIView *)controlView backAction:(UIButton *)sender {
     if (ZFPlayerShared.isLockScreen) {
         [self unLockTheScreen];
@@ -1512,6 +1513,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
             [self pause];
             if ([self.delegate respondsToSelector:@selector(zf_playerBackAction)]) {
                 [self.delegate zf_playerBackAction];
+                [self resetPlayer];
                 [self removeFromSuperview];
             }
         } else {
@@ -1519,6 +1521,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         }
     }
 }
+//响应分享协议
 - (void)mj_controlView:(UIView *)controlView shareAction:(UIButton *)sender isPortrait:(BOOL)isPortrait
 {
     if (ZFPlayerShared.isLockScreen) {
@@ -1529,6 +1532,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         }
     }
 }
+//响应下一个协议
 - (void)mj_controlView:(UIView *)controlView nextAction:(UIButton *)sender
 {
     if (ZFPlayerShared.isLockScreen) {
@@ -1537,6 +1541,17 @@ typedef NS_ENUM(NSInteger, PanDirection){
         if ([self.delegate respondsToSelector:@selector(mj_playerNextAction)]) {
             [self.delegate mj_playerNextAction];
         }
+    }
+}
+#pragma Mark ==== 静音按钮响应事件
+- (void)mj_controlView:(UIView *)controlView screenshotMuteAction:(UIButton *)sender
+{
+    self.volumeViewRetSlider = self.volumeViewSlider;
+    if (sender.selected) {
+        self.volumeViewSlider = 0;
+    }else
+    {
+        self.volumeViewSlider = self.volumeViewRetSlider;
     }
 }
 - (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender
