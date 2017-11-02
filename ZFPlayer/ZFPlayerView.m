@@ -670,10 +670,16 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (void)setOrientationLandscapeConstraint:(UIInterfaceOrientation)orientation {
     [self toOrientation:orientation];
     self.isFullScreen = YES;
-    self.mute = NO;
-    self.player.muted = self.mute;
+    [self updateMuted];
 }
+- (void)updateMuted
+{
+    if (self.isFullScreen) {
+        self.player.muted = NO;
+        self.mute = NO;
+    }
 
+}
 /**
  *  设置竖屏的约束
  */
@@ -823,6 +829,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         default:
             break;
     }
+        [self updateMuted];
 }
 
 // 状态条变化通知（在前台播放才去处理）
