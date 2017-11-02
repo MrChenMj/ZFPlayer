@@ -670,6 +670,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (void)setOrientationLandscapeConstraint:(UIInterfaceOrientation)orientation {
     [self toOrientation:orientation];
     self.isFullScreen = YES;
+    self.mute = NO;
+    self.player.muted = self.mute;
 }
 
 /**
@@ -1547,6 +1549,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma Mark ==== 静音按钮响应事件
 - (void)mj_controlView:(UIView *)controlView screenshotMuteAction:(UIButton *)sender
 {
+    self.mute = sender.selected;
     if (sender.selected) {
        self.player.muted = YES;
     }else

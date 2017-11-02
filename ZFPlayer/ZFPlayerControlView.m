@@ -40,6 +40,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 
 @interface ZFPlayerControlView () <UIGestureRecognizerDelegate>
 
+/** 静音（默认为NO）*/
+@property (nonatomic, assign) BOOL                    mute;
 /** 标题 */
 @property (nonatomic, strong) UILabel                 *titleLabel;
 /** 开始播放按钮 */
@@ -431,6 +433,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 - (void)screenshotBtnClick:(UIButton *)sender {
     sender.selected = !sender.selected;
     if (!self.isFullScreen) {
+        self.mute = sender.selected;
         if ([self.delegate respondsToSelector:@selector(mj_controlView:screenshotMuteAction:)]) {
             [self.delegate mj_controlView:self screenshotMuteAction:sender];
         }
@@ -1045,10 +1048,12 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (!self.isFullScreen) {
         [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_N_Screenshot) forState:UIControlStateNormal];
         [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_S_Screenshot) forState:UIControlStateSelected];
+        _screenshotBtn.selected = self.mute;
     }else
     {
         [_screenshotBtn setImage:ZFPlayerImage(BtnImage_Screenshot) forState:UIControlStateNormal];
         [_screenshotBtn setImage:ZFPlayerImage(@"dd") forState:UIControlStateSelected];
+        _screenshotBtn.selected = NO;
     }
 
 }
