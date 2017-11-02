@@ -1551,10 +1551,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
 {
     self.mute = sender.selected;
     if (sender.selected) {
-       self.player.muted = YES;
+       self.player.muted = NO;//播放
     }else
     {
-       self.player.muted = NO;
+       self.player.muted = YES;//静音
     }
 }
 - (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender
