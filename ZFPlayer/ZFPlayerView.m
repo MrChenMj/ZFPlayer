@@ -1549,7 +1549,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma Mark ==== 静音按钮响应事件
 - (void)mj_controlView:(UIView *)controlView screenshotMuteAction:(UIButton *)sender
 {
-    self.mute = sender.selected;
+    self.mute = !sender.selected;
     if (sender.selected) {
        self.player.muted = NO;//播放
     }else
