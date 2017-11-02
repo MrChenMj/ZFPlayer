@@ -51,7 +51,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (nonatomic, strong) id                     timeObserve;
 /** 滑杆 */
 @property (nonatomic, strong) UISlider               *volumeViewSlider;
-@property (nonatomic, strong) UISlider               *volumeViewRetSlider;
 /** 用来保存快进的总时长 */
 @property (nonatomic, assign) CGFloat                sumTime;
 /** 定义一个实例变量，保存枚举值 */
@@ -229,6 +228,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
         self.controlView = controlView;
     }
     self.playerModel = playerModel;
+    // 显示控制层
+    [self.controlView zf_playerShowControlView];
 }
 
 /**
@@ -1546,12 +1547,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma Mark ==== 静音按钮响应事件
 - (void)mj_controlView:(UIView *)controlView screenshotMuteAction:(UIButton *)sender
 {
-    self.volumeViewRetSlider = self.volumeViewSlider;
     if (sender.selected) {
-        self.volumeViewSlider = 0;
+       self.player.muted = YES;
     }else
     {
-        self.volumeViewSlider = self.volumeViewRetSlider;
+       self.player.muted = NO;
     }
 }
 - (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender
