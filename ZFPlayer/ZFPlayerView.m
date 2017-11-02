@@ -1510,8 +1510,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
         if (!self.isFullScreen) {
             // player加到控制器上，只有一个player时候
             [self pause];
-            [self removeFromSuperview];
-            if ([self.delegate respondsToSelector:@selector(zf_playerBackAction)]) { [self.delegate zf_playerBackAction]; }
+            if ([self.delegate respondsToSelector:@selector(zf_playerBackAction)]) {
+                [self.delegate zf_playerBackAction];
+                [self removeFromSuperview];
+            }
         } else {
             [self interfaceOrientation:UIInterfaceOrientationPortrait];
         }
