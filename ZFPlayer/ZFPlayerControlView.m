@@ -148,7 +148,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         [self.topImageView addSubview:self.resolutionBtn];
         [self.topImageView addSubview:self.titleLabel];
         [self addSubview:self.closeBtn];
-        [self addSubview:self.bottomProgressView];
+//        [self addSubview:self.bottomProgressView];
         
         // 添加子控件的约束
         [self makeSubViewsConstraints];
@@ -325,10 +325,10 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         make.top.mas_equalTo(self.fastTimeLabel.mas_bottom).offset(10);
     }];
     
-    [self.bottomProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.trailing.mas_offset(0);
-        make.bottom.mas_offset(0);
-    }];
+//    [self.bottomProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.leading.trailing.mas_offset(0);
+//        make.bottom.mas_offset(0);
+//    }];
 }
 
 - (void)layoutSubviews {
@@ -771,7 +771,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (!_screenshotBtn) {
         _screenshotBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_screenshotBtn setImage:ZFPlayerImage(@"ZFPlayer_Screenshot") forState:UIControlStateNormal];
-        [_screenshotBtn setImage:ZFPlayerImage(@"ZFPlaye_Screenshot_close") forState:UIControlStateSelected];
+        [_screenshotBtn setImage:ZFPlayerImage(@"000") forState:UIControlStateSelected];
         [_screenshotBtn addTarget:self action:@selector(screenshotBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _screenshotBtn;
