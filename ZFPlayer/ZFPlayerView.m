@@ -718,7 +718,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     // 获取到当前状态条的方向
     UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
     // 判断如果当前方向和要旋转的方向一致,那么不做任何操作
-    if (currentOrientation == orientation) { return; }
+    //添加_playerPushedOrPresented byMj
+    if (currentOrientation == orientation || _playerPushedOrPresented) { return; }
     
     // 根据要旋转的方向,使用Masonry重新修改限制
     if (orientation != UIInterfaceOrientationPortrait) {//
@@ -1472,7 +1473,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if (playerPushedOrPresented) {
         [self pause];
     } else {
-        [self play];
+//        [self play];
     }
 }
 #pragma mark - Getter
