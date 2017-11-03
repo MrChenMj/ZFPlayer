@@ -1167,12 +1167,15 @@ typedef NS_ENUM(NSInteger, PanDirection){
             }
             else if (x < y){ // 垂直移动
                 self.panDirection = PanDirectionVerticalMoved;
+#warning ============== 改写亮度 =======
                 // 开始滑动的时候,状态改为正在控制音量
-                if (locationPoint.x > self.bounds.size.width / 2) {
-                    self.isVolume = YES;
-                }else { // 状态改为显示亮度调节
-                    self.isVolume = NO;
-                }
+//                if (locationPoint.x > self.bounds.size.width / 2) {
+//                    self.isVolume = YES;
+//                }else { // 状态改为显示亮度调节
+//                    self.isVolume = NO;
+//                }
+#warning ============== the end =======
+                self.isVolume = YES;//->全局滑动显示声音
             }
             break;
         }
