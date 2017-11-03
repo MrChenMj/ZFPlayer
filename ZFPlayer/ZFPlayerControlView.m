@@ -439,7 +439,6 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         }
     }else
     {
-        [self lockScrrenBtnClick:self.lockBtn];
         if ([self.delegate respondsToSelector:@selector(mj_controlView:screenshotAction:)]) {
             [self.delegate mj_controlView:self screenshotAction:sender];
         }
@@ -1325,7 +1324,14 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 }
 /** 截图屏幕方向按钮状态 */
 - (void)mj_screenshotBtnState:(BOOL)state {
-    self.screenshotBtn.selected = state;
+    if (self.isFullScreen) {
+        if (state) {
+            self.screenshotBtn.alpha = 0;
+        }
+    }else
+    {
+        self.screenshotBtn.selected = state;
+    }
     [self zf_playerShowOrHideControlView];
 }
 /** 下载按钮状态 */
