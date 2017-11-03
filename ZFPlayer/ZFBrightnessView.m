@@ -49,7 +49,7 @@
 - (instancetype)init {
 	if (self = [super init]) {
 		self.frame = CGRectMake(ScreenWidth * 0.5, ScreenHeight * 0.5, 155, 155);
-		
+        self.hidden = YES;
         self.layer.cornerRadius  = 10;
         self.layer.masksToBounds = YES;
         
