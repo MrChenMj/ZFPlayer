@@ -139,6 +139,9 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
  * 设置横屏按钮
  */
 - (void)updateOrientationPortrait;
-
+/**
+ * 添加引导图
+ */
+- (void)addWelcomeViewBySubView:(UIView *)subView;
 @end
 

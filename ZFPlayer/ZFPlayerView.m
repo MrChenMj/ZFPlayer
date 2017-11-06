@@ -357,6 +357,18 @@ typedef NS_ENUM(NSInteger, PanDirection){
         self.isLocked = NO;
     }
 }
+
+/**
+ * 添加引导图
+ */
+- (void)addWelcomeViewBySubView:(UIView *)subView
+{
+    [self.controlView addSubview:subView];
+    [subView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsZero);
+    }];
+}
+
 #pragma mark - Private Method
 
 /**
