@@ -135,7 +135,9 @@
     if (!_playerModel) {
         _playerModel                  = [[ZFPlayerModel alloc] init];
         _playerModel.title            = @"这里设置视频标题";
-        _playerModel.videoURL         = self.videoURL;
+        NSString *mp4Path =[[NSBundle mainBundle]pathForResource:@"my_video" ofType:@"mp4"];
+        NSURL *se=[NSURL fileURLWithPath:mp4Path];
+        _playerModel.videoURL         =se;// self.videoURL;
         _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
         _playerModel.fatherView       = self.playerFatherView;
 //        _playerModel.resolutionDic = @{@"高清" : self.videoURL.absoluteString,
@@ -181,9 +183,9 @@
 
 - (IBAction)playNewVideo:(UIButton *)sender {
     self.playerModel.title            = @"这是新播放的视频";
-    self.playerModel.videoURL         = [NSURL URLWithString:@"http://baobab.wdjcdn.com/1456665467509qingshu.mp4"];
+    self.playerModel.videoURL         = [NSURL URLWithString:@"https://baobab.wdjcdn.com/1456665467509qingshu.mp4"];
     // 设置网络封面图
-    self.playerModel.placeholderImageURLString = @"http://img.wdjimg.com/image/video/447f973848167ee5e44b67c8d4df9839_0_0.jpeg";
+    self.playerModel.placeholderImageURLString = @"https://img.wdjimg.com/image/video/447f973848167ee5e44b67c8d4df9839_0_0.jpeg";
     // 从xx秒开始播放视频
     // self.playerModel.seekTime         = 15;
     [self.playerView resetToPlayNewVideo:self.playerModel];

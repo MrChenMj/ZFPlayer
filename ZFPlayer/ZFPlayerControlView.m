@@ -1175,8 +1175,9 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self.activity stopAnimating];
     // 拖拽的时长
     NSInteger proMin = draggedTime / 60;//当前秒
-    NSInteger proSec = draggedTime % 60;//当前分钟
     
+    NSInteger proSec = draggedTime % 60;//当前分钟
+    NSLog(@"\n raggedTimen------>%ld",draggedTime);
     //duration 总时长
     NSInteger durMin = totalTime / 60;//总秒
     NSInteger durSec = totalTime % 60;//总分钟

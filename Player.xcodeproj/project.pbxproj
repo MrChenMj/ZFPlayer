@@ -15,6 +15,7 @@
 		49CD65D11BF0C4EC0060DB9E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CD65D01BF0C4EC0060DB9E /* MediaPlayer.framework */; };
 		49F272801BF2330700FCC767 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49F2727F1BF2330700FCC767 /* Info.plist */; };
 		6DFFA86AB7DE7145F8B2FDBB /* libPods-Player.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E3CE675A5AD72E88B7F01B /* libPods-Player.a */; };
+		B4036E5A1FBD666700BC4294 /* my_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B4036E591FBD666700BC4294 /* my_video.mp4 */; };
 		CC220D4A1DB7B504001191C7 /* MMMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = CC220D491DB7B504001191C7 /* MMMaterialDesignSpinner.m */; };
 		CC2877CC1D9B60760097CEDA /* UINavigationController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2877C71D9B60760097CEDA /* UINavigationController+ZFPlayerRotation.m */; };
 		CC2877CD1D9B60760097CEDA /* UITabBarController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2877C91D9B60760097CEDA /* UITabBarController+ZFPlayerRotation.m */; };
@@ -94,6 +95,7 @@
 		49CD65D01BF0C4EC0060DB9E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		49F2727F1BF2330700FCC767 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5025702D2252268F74E00592 /* Pods-Player.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Player.release.xcconfig"; path = "Pods/Target Support Files/Pods-Player/Pods-Player.release.xcconfig"; sourceTree = "<group>"; };
+		B4036E591FBD666700BC4294 /* my_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = my_video.mp4; sourceTree = "<group>"; };
 		CC220D481DB7B504001191C7 /* MMMaterialDesignSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMaterialDesignSpinner.h; sourceTree = "<group>"; };
 		CC220D491DB7B504001191C7 /* MMMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMaterialDesignSpinner.m; sourceTree = "<group>"; };
 		CC2877C61D9B60760097CEDA /* UINavigationController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		CC6C7AE21C9BDFBA0000AD58 /* PlayerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B4036E591FBD666700BC4294 /* my_video.mp4 */,
 				CC6C7AE31C9BDFE90000AD58 /* MoviePlayerViewController.h */,
 				CC6C7AE41C9BDFE90000AD58 /* MoviePlayerViewController.m */,
 			);
@@ -520,6 +523,7 @@
 				CC48ECD71C8863DB009CF0D0 /* Main.storyboard in Resources */,
 				CC6945AA1CB7F66300452D55 /* LaunchScreen.xib in Resources */,
 				CCE1C1401C9AA131004C95AC /* videoData.json in Resources */,
+				B4036E5A1FBD666700BC4294 /* my_video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

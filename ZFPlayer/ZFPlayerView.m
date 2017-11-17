@@ -1250,8 +1250,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
  */
 - (void)horizontalMoved:(CGFloat)value {
     // 每次滑动需要叠加时间
-    self.sumTime += value / 200;
-    
+    self.sumTime += value /1800;
+//    NSLog(@"---->%f   %f",value,value /1000);
     // 需要限定sumTime的范围
     CMTime totalTime           = self.playerItem.duration;
     CGFloat totalMovieDuration = (CGFloat)totalTime.value/totalTime.timescale;
