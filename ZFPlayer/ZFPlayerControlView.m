@@ -570,17 +570,13 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (IS_IPHONEX) {
         if (orientation == UIDeviceOrientationLandscapeRight ) {
-            [self.screenshotBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.trailing.mas_equalTo(self.mas_trailing).offset(-44);
-                make.centerY.equalTo(self.mas_centerY);
-                make.width.height.mas_equalTo(37);
             }];
         }else
         {
-            [self.screenshotBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.trailing.mas_equalTo(self.mas_trailing).offset(0);
-                make.centerY.equalTo(self.mas_centerY);
-                make.width.height.mas_equalTo(37);
             }];
         }
     }
