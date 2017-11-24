@@ -568,6 +568,22 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     self.fullScreenBtn.selected = self.isFullScreen;
     [self updateScreenshotBtn];
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    if (IS_IPHONEX) {
+        if (orientation == UIDeviceOrientationLandscapeRight ) {
+            [self.screenshotBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.trailing.equalTo(self.mas_trailing).offset(-StatusBarHeights);
+                make.centerY.equalTo(self.mas_centerY);
+                make.width.height.mas_equalTo(37);
+            }];
+        }else
+        {
+            [self.screenshotBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.trailing.equalTo(self.mas_trailing);
+                make.centerY.equalTo(self.mas_centerY);
+                make.width.height.mas_equalTo(37);
+            }];
+        }
+    }
     if (orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown || orientation == UIDeviceOrientationUnknown || orientation == UIDeviceOrientationPortraitUpsideDown) { return; }
     if (!self.isShrink && !self.isPlayEnd && !self.showing) {
         // 显示、隐藏控制层
