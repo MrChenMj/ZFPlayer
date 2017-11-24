@@ -479,7 +479,7 @@
 				TargetAttributes = {
 					4947F7891BE996AC003093C8 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 74BBX7X742;
+						DevelopmentTeam = 89ZMETKDSM;
 						ProvisioningStyle = Automatic;
 					};
 					4947F7A21BE996AC003093C8 = {
@@ -747,7 +747,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74BBX7X742;
+				DEVELOPMENT_TEAM = 89ZMETKDSM;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -767,7 +767,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74BBX7X742;
+				DEVELOPMENT_TEAM = 89ZMETKDSM;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
