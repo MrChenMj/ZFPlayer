@@ -44,6 +44,8 @@
 #define ZFPlayerOrientationIsPortrait       UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)
 
 #define IS_IPHONEX (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(375, 812)))
+#define IS_IPHONEXL (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(812,375)))
+
 #define StatusBarHeights (CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]))
 
 #import "ZFPlayerView.h"

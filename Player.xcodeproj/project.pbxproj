@@ -16,6 +16,7 @@
 		49F272801BF2330700FCC767 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49F2727F1BF2330700FCC767 /* Info.plist */; };
 		6DFFA86AB7DE7145F8B2FDBB /* libPods-Player.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E3CE675A5AD72E88B7F01B /* libPods-Player.a */; };
 		B4036E5A1FBD666700BC4294 /* my_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B4036E591FBD666700BC4294 /* my_video.mp4 */; };
+		B4066CC01FCBA74300BBFF4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4066CBF1FCBA74300BBFF4B /* Images.xcassets */; };
 		CC220D4A1DB7B504001191C7 /* MMMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = CC220D491DB7B504001191C7 /* MMMaterialDesignSpinner.m */; };
 		CC2877CC1D9B60760097CEDA /* UINavigationController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2877C71D9B60760097CEDA /* UINavigationController+ZFPlayerRotation.m */; };
 		CC2877CD1D9B60760097CEDA /* UITabBarController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2877C91D9B60760097CEDA /* UITabBarController+ZFPlayerRotation.m */; };
@@ -96,6 +97,7 @@
 		49F2727F1BF2330700FCC767 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5025702D2252268F74E00592 /* Pods-Player.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Player.release.xcconfig"; path = "Pods/Target Support Files/Pods-Player/Pods-Player.release.xcconfig"; sourceTree = "<group>"; };
 		B4036E591FBD666700BC4294 /* my_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = my_video.mp4; sourceTree = "<group>"; };
+		B4066CBF1FCBA74300BBFF4B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC220D481DB7B504001191C7 /* MMMaterialDesignSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMaterialDesignSpinner.h; sourceTree = "<group>"; };
 		CC220D491DB7B504001191C7 /* MMMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMaterialDesignSpinner.m; sourceTree = "<group>"; };
 		CC2877C61D9B60760097CEDA /* UINavigationController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				CC48ECD61C8863DB009CF0D0 /* Main.storyboard */,
 				4947F7991BE996AC003093C8 /* Assets.xcassets */,
 				49F2727F1BF2330700FCC767 /* Info.plist */,
+				B4066CBF1FCBA74300BBFF4B /* Images.xcassets */,
 				4947F78D1BE996AC003093C8 /* Supporting Files */,
 			);
 			path = Player;
@@ -518,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC2CC63C1CA24D4B0028BBDD /* ZFPlayer.bundle in Resources */,
+				B4066CC01FCBA74300BBFF4B /* Images.xcassets in Resources */,
 				4947F79A1BE996AC003093C8 /* Assets.xcassets in Resources */,
 				49F272801BF2330700FCC767 /* Info.plist in Resources */,
 				CC48ECD71C8863DB009CF0D0 /* Main.storyboard in Resources */,

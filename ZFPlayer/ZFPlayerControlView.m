@@ -569,7 +569,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self updateScreenshotBtn];
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (IS_IPHONEX) {
-        if (orientation == UIDeviceOrientationLandscapeRight ) {
+        if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(self.mas_right).offset(-44);
             }];
@@ -580,6 +580,20 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
             }];
         }
     }
+    
+    if (IS_IPHONEXL) {
+        if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
+            [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.mas_right).offset(-44);
+            }];
+        }else
+        {
+            [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.mas_right).offset(0);
+            }];
+        }
+    }
+    
     if (orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown || orientation == UIDeviceOrientationUnknown || orientation == UIDeviceOrientationPortraitUpsideDown) { return; }
     if (!self.isShrink && !self.isPlayEnd && !self.showing) {
         // 显示、隐藏控制层
