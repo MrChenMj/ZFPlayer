@@ -349,13 +349,16 @@ typedef NS_ENUM(NSInteger, PanDirection){
  */
 - (void)screenshotByIsRead:(BOOL)isRead
 {
-    [self.controlView mj_screenshotBtnState:isRead];
-    if (ZFPlayerShared.isLockScreen) {
-        // 调用AppDelegate单例记录播放状态是否锁屏
+    if (isRead) {
+        self.isLocked = YES;
+        ZFPlayerShared.isLockScreen =YES;
+    }else
+    {
         ZFPlayerShared.isLockScreen = NO;
-        [self.controlView zf_playerLockBtnState:NO];
         self.isLocked = NO;
     }
+    [self.controlView mj_screenshotBtnState:isRead];
+
 }
 
 /**
