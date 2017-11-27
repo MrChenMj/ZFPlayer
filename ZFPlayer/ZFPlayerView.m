@@ -808,7 +808,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     UIInterfaceOrientation interfaceOrientation = (UIInterfaceOrientation)orientation;
     if (orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown || orientation == UIDeviceOrientationUnknown ) { return; }
-    
+    if ([self.delegate respondsToSelector:@selector(mj_playerOrientation:)]) {
+        [self.delegate mj_playerOrientation:interfaceOrientation];
+    }
     switch (interfaceOrientation) {
         case UIInterfaceOrientationPortraitUpsideDown:{
         }
