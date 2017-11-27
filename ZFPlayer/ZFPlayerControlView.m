@@ -714,13 +714,15 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 }
 - (void)hidTopByAlpha:(int)alpha
 {
-    if (self.isFullScreen) {
-        self.topImageView.alpha    = alpha;
-        self.screenshotBtn.alpha = alpha;
-    }else
-    {
-        self.topImageView.alpha    = 1;
-    }
+    self.topImageView.alpha    = alpha;
+    self.screenshotBtn.alpha = alpha;
+//    if (self.isFullScreen) {
+//        self.topImageView.alpha    = alpha;
+//        self.screenshotBtn.alpha = alpha;
+//    }else
+//    {
+//        self.topImageView.alpha    = 1;
+//    }
 }
 - (void)hideControlView {
     self.showing = NO;
@@ -735,11 +737,13 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         [self hidTopByAlpha:0];
     }else
     {
-        if(self.isFullScreen)
-        {
-            self.topImageView.alpha   =  self.bottomImageView.alpha;
-            self.screenshotBtn.alpha = self.topImageView.alpha;
-        }
+//        if(self.isFullScreen)
+//        {
+//            self.topImageView.alpha   =  self.bottomImageView.alpha;
+//            self.screenshotBtn.alpha = self.topImageView.alpha;
+//        }
+        self.topImageView.alpha   =  self.bottomImageView.alpha;
+        self.screenshotBtn.alpha = self.topImageView.alpha;
     }
 }
 
