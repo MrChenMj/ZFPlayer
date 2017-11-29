@@ -260,7 +260,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     //    }];
     
     [self.fullScreenBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(30);
+        make.width.height.mas_equalTo(45);
         make.trailing.equalTo(self.bottomImageView.mas_trailing).offset(-5);
         make.centerY.equalTo(self.startBtn.mas_centerY);
     }];
