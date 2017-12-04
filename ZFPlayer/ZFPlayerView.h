@@ -46,7 +46,8 @@
 - (void)zf_playerControlViewWillShow:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
 /** 控制层即将隐藏 */
 - (void)zf_playerControlViewWillHidden:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
-
+/** 重播事件 */
+- (void)mj_playerRepeatPlayAction;
 /** 视频方向 */
 - (void)mj_playerOrientation:(UIInterfaceOrientation )orientation;
 

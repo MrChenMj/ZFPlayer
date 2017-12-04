@@ -1616,8 +1616,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.playDidEnd   = NO;
     // 重播改为NO
     self.repeatToPlay = NO;
-    [self seekToTime:0 completionHandler:nil];
-    
+//    [self seekToTime:0 completionHandler:nil];mark--->重播当前视频 测试一直想成为产品经理
+    if ([self.delegate respondsToSelector:@selector(mj_playerRepeatPlayAction)]) {
+        [self.delegate mj_playerRepeatPlayAction];
+    }
     if ([self.videoURL.scheme isEqualToString:@"file"]) {
         self.state = ZFPlayerStatePlaying;
     } else {
