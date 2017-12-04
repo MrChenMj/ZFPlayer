@@ -111,7 +111,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 @property (nonatomic, strong) UIPanGestureRecognizer *shrinkPanGesture;
 
-@property (nonatomic, strong) UIView                 *controlView;
 @property (nonatomic, strong) ZFPlayerModel          *playerModel;
 @property (nonatomic, assign) NSInteger              seekTime;
 @property (nonatomic, strong) NSURL                  *videoURL;
