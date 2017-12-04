@@ -36,7 +36,7 @@
 /** 分享按钮事件 */
 - (void)mj_playerShareActionByControlView:(UIView *)controlView isPortrait:(BOOL)isPortrait;
 /** 下一个按钮事件 */
-- (void)mj_playerNextAction;
+- (void)mj_playerNextActionByControlView:(UIView *)controlView;
 /** 截图按钮事件 */
 - (void)mj_playerScreenShotActionByIsChose:(BOOL)isChose controlView:(UIView *)controlView imeges:(UIImage *)image;
 

@@ -1569,8 +1569,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if (ZFPlayerShared.isLockScreen) {
         [self unLockTheScreen];
     } else {
-        if ([self.delegate respondsToSelector:@selector(mj_playerNextAction)]) {
-            [self.delegate mj_playerNextAction];
+        if ([self.delegate respondsToSelector:@selector(mj_playerNextActionByControlView:)]) {
+            [self.delegate mj_playerNextActionByControlView:controlView];
         }
     }
 }
