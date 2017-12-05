@@ -1396,7 +1396,12 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     {
         self.screenshotBtn.selected = state;
     }
-    [self zf_playerShowOrHideControlView];
+    if (state) {
+        [self zf_playerHideControlView];
+    }else
+    {
+      [self zf_playerShowControlView];
+    }
 }
 /** 下载按钮状态 */
 - (void)zf_playerDownloadBtnState:(BOOL)state {
