@@ -149,5 +149,11 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
  * 添加引导图
  */
 - (void)addWelcomeViewBySubView:(UIView *)subView;
+
+/**
+ * 显示工具图层
+ */
+- (void)playerShowControlViewByIsShow:(BOOL)isShow;
+
 @end
 

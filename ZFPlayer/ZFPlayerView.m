@@ -371,6 +371,20 @@ typedef NS_ENUM(NSInteger, PanDirection){
     }];
 }
 
+/**
+ * 显示工具图层
+ */
+- (void)playerShowControlViewByIsShow:(BOOL)isShow
+{
+    if(isShow)
+    {
+        [self.controlView zf_playerShowControlView];
+    }else
+    {
+        [self.controlView zf_playerHideControlView];
+    }
+}
+
 #pragma mark - Private Method
 
 /**
