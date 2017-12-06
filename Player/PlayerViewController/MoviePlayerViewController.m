@@ -114,7 +114,17 @@
     // 设置最多同时下载个数（默认是3）
     [ZFDownloadManager sharedDownloadManager].maxCount = 4;
 }
-
+ - (void)mj_playerScreenShotActionByIsChose:(BOOL)isChose controlView:(UIView *)controlView imeges:(UIImage *)image
+{
+    if (isChose) {
+        [self.playerView screenshotByIsRead:YES];
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        [self.playerView pause];
+    }
+}
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *) contextInfo{
+      NSString *msg =error==nil?@"保存图片成功":@"相册权限被拒绝,请进入设置>隐私>永乐票务>照片开启权限";
+}
 - (void)zf_playerControlViewWillShow:(UIView *)controlView isFullscreen:(BOOL)fullscreen {
 //    self.backBtn.hidden = YES;
     [UIView animateWithDuration:0.25 animations:^{

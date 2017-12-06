@@ -1759,15 +1759,12 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 #pragma clang diagnostic pop
 - (UIImage*) thumbnailImage {
-    [self pause];
     self.imageGenerator.appliesPreferredTrackTransform = YES;
-    AVPlayerItem *currentItem = self.playerItem;
-    CMTime times = currentItem.currentTime;
+    CMTime times = self.player.currentTime;
     NSError *error = nil;
     CMTime actualTime;
     CGImageRef image = [self.imageGenerator copyCGImageAtTime:times actualTime:&actualTime error:&error];
     UIImage *img = [[UIImage alloc] initWithCGImage:image];
-
     return img;
 }
 @end
