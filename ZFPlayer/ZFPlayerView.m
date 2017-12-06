@@ -1761,7 +1761,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (UIImage*) thumbnailImage {
     [self pause];
     self.imageGenerator.appliesPreferredTrackTransform = YES;
-    CMTime times = self.player.currentTime;
+    AVPlayerItem *currentItem = self.playerItem;
+    CMTime times = currentItem.currentTime;
     NSError *error = nil;
     CMTime actualTime;
     CGImageRef image = [self.imageGenerator copyCGImageAtTime:times actualTime:&actualTime error:&error];
