@@ -202,7 +202,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self.topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.equalTo(self);
         make.top.equalTo(self.mas_top);
-        make.height.mas_equalTo(50).offset(topG);
+        make.height.mas_equalTo(50+topG);
     }];
     
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -666,7 +666,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     self.nextBtn.hidden = !self.isFullScreen;
     
     [self.backBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.topImageView.mas_top).offset(3);
+        make.top.equalTo(self.topImageView.mas_top).offset(3+topG);
         make.leading.equalTo(self.topImageView.mas_leading).offset(10);
         make.width.height.mas_equalTo(40);
     }];
@@ -674,7 +674,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self.topImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.equalTo(self);
         make.top.equalTo(self.mas_top);
-        make.height.mas_equalTo(50).offset(topG);
+        make.height.equalTo(@(50+topG));
     }];
     
     [self.bottomImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -683,7 +683,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     }];
     
     [self.shareBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.topImageView.mas_top).offset(3);
+        make.top.equalTo(self.topImageView.mas_top).offset(3+topG);
         make.trailing.equalTo(self.topImageView.mas_trailing).offset(-10);
         make.width.height.mas_equalTo(40);
     }];
