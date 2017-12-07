@@ -79,16 +79,18 @@
         make.height.mas_equalTo(self.playerFatherView.mas_width).multipliedBy(9.0f/16.0f);
     }];
     */
-    
     // 自动播放，默认不自动播放
     [self.playerView autoPlayTheVideo];
 }
-
 // 返回值要必须为NO
 - (BOOL)shouldAutorotate {
     return NO;
 }
-
+- (BOOL)prefersHomeIndicatorAutoHidden {
+    
+    return YES;
+    
+}
 - (UIStatusBarStyle)preferredStatusBarStyle {
     // 这里设置横竖屏不同颜色的statusbar
     // if (ZFPlayerShared.isLandscape) {
