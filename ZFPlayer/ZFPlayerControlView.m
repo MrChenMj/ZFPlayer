@@ -133,7 +133,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         bomG = 0;
         if (IS_IPHONEX) {
             topG = 20;
-            bomG = -10;
+//            bomG = -10;
         }
         [self addSubview:self.placeholderImageView];
         [self addSubview:self.topImageView];
@@ -201,8 +201,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
  
     [self.topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.equalTo(self);
-        make.top.equalTo(self.mas_top).offset(topG);
-        make.height.mas_equalTo(50);
+        make.top.equalTo(self.mas_top);
+        make.height.mas_equalTo(50).offset(topG);
     }];
     
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -643,7 +643,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self.shareBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.topImageView.mas_top).offset(3);
         make.trailing.equalTo(self.topImageView.mas_trailing).offset(-10);
-        make.width.height.mas_equalTo(40);
+        make.width.height.mas_equalTo(50);
     }];
     
     [self.progressView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -673,8 +673,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     
     [self.topImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.equalTo(self);
-        make.top.equalTo(self.mas_top).offset(topG);
-        make.height.mas_equalTo(50);
+        make.top.equalTo(self.mas_top);
+        make.height.mas_equalTo(50).offset(topG);
     }];
     
     [self.bottomImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -1181,7 +1181,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
  *  显示控制层
  */
 - (void)zf_playerShowControlView {
-    if ([self.delegate respondsToSelector:@selector(zf_controlViewWillShow:isFullscreen:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(zf_controlViewWillShow:isFullscreen:)]) {
         [self.delegate zf_controlViewWillShow:self isFullscreen:self.isFullScreen];
     }
     [self zf_playerCancelAutoFadeOutControlView];
