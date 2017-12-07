@@ -579,7 +579,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_IPHONEX) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(self.mas_right).offset(-44);
+               make.trailing.equalTo(self.mas_trailing).offset(-44);
             }];
         }else
         {
@@ -592,7 +592,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_IPHONEXL) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(self.mas_right).offset(-44);
+                make.trailing.equalTo(self.mas_trailing).offset(-44);
             }];
         }else
         {
