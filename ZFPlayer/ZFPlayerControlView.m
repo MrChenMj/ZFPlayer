@@ -584,7 +584,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         }else
         {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(self.mas_right).offset(0);
+                make.trailing.mas_equalTo(self.mas_trailing).offset(0);
             }];
         }
     }
@@ -597,7 +597,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         }else
         {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(self.mas_right).offset(0);
+                make.trailing.mas_equalTo(self.mas_trailing).offset(0);
             }];
         }
     }
