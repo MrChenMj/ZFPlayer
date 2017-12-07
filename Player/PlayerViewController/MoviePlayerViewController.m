@@ -119,11 +119,11 @@
     if (isChose) {
         [self.playerView screenshotByIsRead:YES];
         UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-        [self.playerView pause];
     }
 }
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *) contextInfo{
       NSString *msg =error==nil?@"保存图片成功":@"相册权限被拒绝,请进入设置>隐私>永乐票务>照片开启权限";
+    NSLog(@"%@",msg);
 }
 - (void)zf_playerControlViewWillShow:(UIView *)controlView isFullscreen:(BOOL)fullscreen {
 //    self.backBtn.hidden = YES;
@@ -147,7 +147,7 @@
         _playerModel.title            = @"这里设置视频标题";
         NSString *mp4Path =[[NSBundle mainBundle]pathForResource:@"my_video" ofType:@"mp4"];
         NSURL *se=[NSURL fileURLWithPath:mp4Path];
-        _playerModel.videoURL         =se;// self.videoURL;
+        _playerModel.videoURL        =[NSURL URLWithString:@"https://maoyan.meituan.net/movie/videos/854x480917cca579072464cb5dce8f4f84c4b6a.mp4"];
         _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
         _playerModel.fatherView       = self.playerFatherView;
 //        _playerModel.resolutionDic = @{@"高清" : self.videoURL.absoluteString,

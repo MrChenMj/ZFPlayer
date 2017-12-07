@@ -43,6 +43,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 /** 播放属性 */
 @property (nonatomic, strong) AVPlayer               *player;
+@property (nonatomic, strong) AVPlayerItemVideoOutput *_videoOutPut;
 @property (nonatomic, strong) AVPlayerItem           *playerItem;
 @property (nonatomic, strong) AVURLAsset             *urlAsset;
 @property (nonatomic, strong) AVAssetImageGenerator  *imageGenerator;
@@ -113,6 +114,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 @property (nonatomic, strong) ZFPlayerModel          *playerModel;
 @property (nonatomic, assign) NSInteger              seekTime;
+@property (nonatomic, assign) NSInteger              seeCurTime;//当前时间
 @property (nonatomic, strong) NSURL                  *videoURL;
 @property (nonatomic, strong) NSDictionary           *resolutionDic;
 @end
@@ -420,6 +422,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.urlAsset = [AVURLAsset assetWithURL:self.videoURL];
     // 初始化playerItem
     self.playerItem = [AVPlayerItem playerItemWithAsset:self.urlAsset];
+    //初始化输出流
+    self._videoOutPut = [[AVPlayerItemVideoOutput alloc] init];
+    [self.playerItem addOutput:self._videoOutPut];
     // 每次都重新创建Player，替换replaceCurrentItemWithPlayerItem:，该方法阻塞线程
     self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
     
@@ -1110,7 +1115,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
         }
     }
 }
-
 /**
  *  应用退到后台
  */
@@ -1120,6 +1124,14 @@ typedef NS_ENUM(NSInteger, PanDirection){
     ZFPlayerShared.isLockScreen = YES;
     [_player pause];
     self.state                  = ZFPlayerStatePause;
+    NSLog(@"%ld",self.seeCurTime);
+//    if (self.player.currentItem.status == AVPlayerItemStatusReadyToPlay) {
+//        CMTime dragedCMTime = CMTimeMake(self.seeCurTime, 1); //kCMTimeZero
+//        [self.player seekToTime:dragedCMTime toleranceBefore:CMTimeMake(1,1) toleranceAfter:CMTimeMake(1,1) completionHandler:^(BOOL finished) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//            });
+//        }];
+//    }
 }
 
 /**
@@ -1590,6 +1602,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma Mark ==== 静音按钮响应事件
 - (void)mj_controlView:(UIView *)controlView screenshotMuteAction:(UIButton *)sender
 {
+
     self.mute = !sender.selected;
     if (sender.selected) {
        self.player.muted = NO;//播放
@@ -1598,10 +1611,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
        self.player.muted = YES;//静音
     }
 }
-- (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender
+- (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender seeTime:(NSInteger)seeTime
 {
     if ([self.delegate respondsToSelector:@selector(mj_playerScreenShotActionByIsChose:controlView:imeges:)]) {
-        [self.delegate mj_playerScreenShotActionByIsChose:sender.selected controlView:controlView imeges:[self thumbnailImage]];
+ 
+        [self.delegate mj_playerScreenShotActionByIsChose:sender.selected controlView:controlView imeges:[self thumbnailImageByCurTime:seeTime]];
     }
 }
 
@@ -1756,16 +1770,28 @@ typedef NS_ENUM(NSInteger, PanDirection){
         [self.delegate zf_playerControlViewWillHidden:controlView isFullscreen:fullscreen];
     }
 }
-
+- (void)mj_controlView:(UIView *)controlView playSeeTime:(NSInteger)playSeeTime
+{
+    self.seeCurTime = playSeeTime;
+}
 #pragma clang diagnostic pop
-- (UIImage*) thumbnailImage {
-    self.imageGenerator.appliesPreferredTrackTransform = YES;
-    CMTime times = self.player.currentTime;
-    NSError *error = nil;
-    CMTime actualTime;
-    CGImageRef image = [self.imageGenerator copyCGImageAtTime:times actualTime:&actualTime error:&error];
-    UIImage *img = [[UIImage alloc] initWithCGImage:image];
+- (UIImage*) thumbnailImageByCurTime:(NSInteger)curTime {
+    [self pause];
+   //转换成CMTime才能给player来控制播放进度
+    UIImage *img;
+    CMTime itemTime = _player.currentItem.currentTime;
+    CVPixelBufferRef pixelBuffer = [self._videoOutPut copyPixelBufferForItemTime:itemTime itemTimeForDisplay:nil];
+    CIImage *ciImage = [CIImage imageWithCVPixelBuffer:pixelBuffer];
+    CIContext *temporaryContext = [CIContext contextWithOptions:nil];
+    CGImageRef videoImage = [temporaryContext
+                             createCGImage:ciImage
+                             fromRect:CGRectMake(0, 0,
+                                                 CVPixelBufferGetWidth(pixelBuffer),
+                                                 CVPixelBufferGetHeight(pixelBuffer))];
+    img = [[UIImage alloc] initWithCGImage:videoImage];
     return img;
 }
+
+
 @end
 

@@ -47,7 +47,7 @@
 /** 声音按钮 */
 - (void)mj_controlView:(UIView *)controlView screenshotMuteAction:(UIButton *)sender;
 /** 截图屏幕方向按钮 */
-- (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender;
+- (void)mj_controlView:(UIView *)controlView screenshotAction:(UIButton *)sender seeTime:(NSInteger )seeTime;
 /** 重播按钮事件 */
 - (void)zf_controlView:(UIView *)controlView repeatPlayAction:(UIButton *)sender;
 /** 中间播放按钮事件 */
@@ -70,6 +70,7 @@
 - (void)zf_controlViewWillShow:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
 /** 控制层即将隐藏 */
 - (void)zf_controlViewWillHidden:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
-
+/** 时间更新 */
+- (void)mj_controlView:(UIView *)controlView playSeeTime:(NSInteger )playSeeTime;
 @end
 

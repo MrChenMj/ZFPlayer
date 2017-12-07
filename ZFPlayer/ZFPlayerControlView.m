@@ -107,7 +107,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 @property (nonatomic, strong) UIProgressView          *bottomProgressView;
 /** 分辨率的名称 */
 @property (nonatomic, strong) NSArray                 *resolutionArray;
-
+/** 当前时间 */
+@property (nonatomic, assign) NSInteger                 curTime;
 /** 显示控制层 */
 @property (nonatomic, assign, getter=isShowing) BOOL  showing;
 /** 小屏播放 */
@@ -447,8 +448,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         }
     }else
     {
-        if ([self.delegate respondsToSelector:@selector(mj_controlView:screenshotAction:)]) {
-            [self.delegate mj_controlView:self screenshotAction:sender];
+        if ([self.delegate respondsToSelector:@selector(mj_controlView:screenshotAction:seeTime:)]) {
+            [self.delegate mj_controlView:self screenshotAction:sender seeTime:self.curTime];
         }
     }
 
@@ -478,6 +479,13 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     sender.selected = !sender.selected;
     if ([self.delegate respondsToSelector:@selector(zf_controlView:fullScreenAction:)]) {
         [self.delegate zf_controlView:self fullScreenAction:sender];
+    }
+}
+
+- (void)upDateSeeTime:(NSInteger)seeTime
+{
+    if ([self.delegate respondsToSelector:@selector(mj_controlView:playSeeTime:)]) {
+        [self.delegate mj_controlView:self playSeeTime:seeTime];
     }
 }
 
@@ -1228,9 +1236,11 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         //        self.currentTimeLabel.text       = [NSString stringWithFormat:@"%02zd:%02zd", proMin, proSec];
         self.currentTimeStr = [NSString stringWithFormat:@"%02zd:%02zd", proMin, proSec];
     }
+    self.curTime = currentTime;
     self.totalTimeStr = [NSString stringWithFormat:@"%02zd:%02zd", durMin, durSec];
     // 更新总时间
-    self.totalTimeLabel.text =[NSString stringWithFormat:@"%@/%@", self.currentTimeStr, self.totalTimeStr] ;
+    self.totalTimeLabel.text =[NSString stringWithFormat:@"%@/%@", self.currentTimeStr, self.totalTimeStr];
+    [self upDateSeeTime:self.curTime];
 }
 
 - (void)zf_playerDraggedTime:(NSInteger)draggedTime totalTime:(NSInteger)totalTime isForward:(BOOL)forawrd hasPreview:(BOOL)preview {
@@ -1238,18 +1248,15 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self.activity stopAnimating];
     // 拖拽的时长
     NSInteger proMin = draggedTime / 60;//当前秒
-    
     NSInteger proSec = draggedTime % 60;//当前分钟
-    NSLog(@"\n raggedTimen------>%ld",draggedTime);
     //duration 总时长
     NSInteger durMin = totalTime / 60;//总秒
     NSInteger durSec = totalTime % 60;//总分钟
-    
+    self.curTime = draggedTime;
     NSString *currentTimeStr = [NSString stringWithFormat:@"%02zd:%02zd", proMin, proSec];
     NSString *totalTimeStr   = [NSString stringWithFormat:@"%02zd:%02zd", durMin, durSec];
     CGFloat  draggedValue    = (CGFloat)draggedTime/(CGFloat)totalTime;
     NSString *timeStr        = [NSString stringWithFormat:@"%@ / %@", currentTimeStr, totalTimeStr];
-    
     // 显示、隐藏预览窗
     self.videoSlider.popUpView.hidden = !preview;
     // 更新slider的值
@@ -1272,6 +1279,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     self.fastView.hidden           = preview;
     self.fastTimeLabel.text        = timeStr;
     self.fastProgressView.progress = draggedValue;
+    [self upDateSeeTime:self.curTime];
     
 }
 
@@ -1291,9 +1299,11 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     NSInteger proMin = draggedTime / 60;//当前秒
     NSInteger proSec = draggedTime % 60;//当前分钟
     NSString *currentTimeStr = [NSString stringWithFormat:@"%02zd:%02zd", proMin, proSec];
+    self.curTime = draggedTime;
     [self.videoSlider setImage:image];
     [self.videoSlider setText:currentTimeStr];
     self.fastView.hidden = YES;
+    [self upDateSeeTime:self.curTime];
 }
 
 /** progress显示缓冲进度 */
