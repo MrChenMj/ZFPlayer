@@ -1125,13 +1125,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [_player pause];
     self.state                  = ZFPlayerStatePause;
     NSLog(@"%ld",self.seeCurTime);
-//    if (self.player.currentItem.status == AVPlayerItemStatusReadyToPlay) {
-//        CMTime dragedCMTime = CMTimeMake(self.seeCurTime, 1); //kCMTimeZero
-//        [self.player seekToTime:dragedCMTime toleranceBefore:CMTimeMake(1,1) toleranceAfter:CMTimeMake(1,1) completionHandler:^(BOOL finished) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//            });
-//        }];
-//    }
+    if (self.player.currentItem.status == AVPlayerItemStatusReadyToPlay) {
+        CMTime dragedCMTime = CMTimeMake(self.seeCurTime, 1); //kCMTimeZero
+        [self.player seekToTime:dragedCMTime toleranceBefore:CMTimeMake(1,1) toleranceAfter:CMTimeMake(1,1) completionHandler:^(BOOL finished) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            });
+        }];
+    }
 }
 
 /**
