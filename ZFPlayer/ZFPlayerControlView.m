@@ -1404,7 +1404,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         }
     }else
     {
-        self.screenshotBtn.selected = state;
+//        self.screenshotBtn.selected = state;
     }
     if (state) {
         [self zf_playerHideControlView];
