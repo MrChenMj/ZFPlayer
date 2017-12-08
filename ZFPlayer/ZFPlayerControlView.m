@@ -601,7 +601,6 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
             }];
         }
     }
-    
     if (orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown || orientation == UIDeviceOrientationUnknown || orientation == UIDeviceOrientationPortraitUpsideDown) { return; }
     if (!self.isShrink && !self.isPlayEnd && !self.showing) {
         // 显示、隐藏控制层
@@ -1119,6 +1118,12 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_N_Screenshot) forState:UIControlStateNormal];
         [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_S_Screenshot) forState:UIControlStateSelected];
         _screenshotBtn.selected = self.mute;
+        if(IS_IPHONEXL || IS_IPHONEX)
+        {
+            [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.trailing.mas_equalTo(self.mas_trailing).offset(0);
+            }];
+        }
     }else
     {
         [_screenshotBtn setImage:ZFPlayerImage(BtnImage_Screenshot) forState:UIControlStateNormal];
