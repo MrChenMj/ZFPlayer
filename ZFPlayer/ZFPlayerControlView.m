@@ -1181,6 +1181,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
  *  显示控制层
  */
 - (void)zf_playerShowControlView {
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(zf_controlViewWillShow:isFullscreen:)]) {
         [self.delegate zf_controlViewWillShow:self isFullscreen:self.isFullScreen];
     }

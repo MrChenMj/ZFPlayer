@@ -27,12 +27,23 @@
 @implementation UIView (CustomControlView)
 
 - (void)setDelegate:(id<ZFPlayerControlViewDelagate>)delegate {
-    objc_setAssociatedObject(self, @selector(delegate), delegate, OBJC_ASSOCIATION_ASSIGN);
+    id __weak weakObject = delegate;
+    id (^block)() = ^{ return weakObject; };
+    objc_setAssociatedObject(self, @selector(delegate),
+                             block, OBJC_ASSOCIATION_COPY);
+}
+- (id<ZFPlayerControlViewDelagate>)delegate {
+    id (^block)() =objc_getAssociatedObject(self, @selector(delegate));
+    return (block ? block() : nil);
 }
 
-- (id<ZFPlayerControlViewDelagate>)delegate {
-    return objc_getAssociatedObject(self, _cmd);
-}
+//- (void)setDelegate:(id<ZFPlayerControlViewDelagate>)delegate {
+//    objc_setAssociatedObject(self, @selector(delegate), delegate, OBJC_ASSOCIATION_ASSIGN);
+//}
+//
+//- (id<ZFPlayerControlViewDelagate>)delegate {
+//    return objc_getAssociatedObject(self, _cmd);
+//}
 
 /**
  * 设置播放模型
