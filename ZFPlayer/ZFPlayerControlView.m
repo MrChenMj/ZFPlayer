@@ -131,7 +131,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (self) {
         topG = 0;
         bomG = 0;
-        if (IS_IPHONEX) {
+        if (IS_FullScreen) {
             topG = 20;
 //            bomG = -10;
         }
@@ -576,7 +576,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     self.fullScreenBtn.selected = self.isFullScreen;
     [self updateScreenshotBtn];
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    if (IS_IPHONEX) {
+    if (IS_FullScreen) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
                make.trailing.equalTo(self.mas_trailing).offset(-44);
@@ -589,7 +589,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         }
     }
     
-    if (IS_IPHONEXL) {
+    if (IS_FullScreen_L) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.trailing.equalTo(self.mas_trailing).offset(-44);
@@ -1118,7 +1118,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_N_Screenshot) forState:UIControlStateNormal];
         [_screenshotBtn setImage:ZFPlayerImage(OrBtnImage_S_Screenshot) forState:UIControlStateSelected];
         _screenshotBtn.selected = self.mute;
-        if(IS_IPHONEXL || IS_IPHONEX)
+        if(IS_FullScreen_L || IS_FullScreen)
         {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.trailing.mas_equalTo(self.mas_trailing).offset(0);

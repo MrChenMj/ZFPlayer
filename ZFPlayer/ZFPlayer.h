@@ -43,8 +43,21 @@
 
 #define ZFPlayerOrientationIsPortrait       UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)
 
-#define IS_IPHONEX (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(375, 812)))
-#define IS_IPHONEXL (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(812,375)))
+
+//为了兼容模拟器,使用屏幕大小判断是否iPhoneX等全面屏
+#define IS_iPhoneX (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(375, 812)))
+//#define IS_iPhoneXS (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(375, 812)))
+#define IS_iPhoneXS_Max (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(414, 896)))
+//#define IS_iPhoneXR (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(414, 896)))
+
+//是否是全面屏手机型号,且是横屏状态(landScape)
+#define IS_iPhoneX_L (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(812, 375)))
+#define IS_iPhoneXS_Max_L (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(896, 414)))
+
+//是否是全面屏机型:iPhone X, iPhone XS, iPhone XS Max, iPhone XR
+#define IS_FullScreen (IS_iPhoneX || IS_iPhoneXS_Max)
+//是否是全名屏手机,且是横屏状态
+#define IS_FullScreen_L (IS_iPhoneX_L || IS_iPhoneXS_Max_L)
 
 #define StatusBarHeights (CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]))
 
