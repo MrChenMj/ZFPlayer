@@ -294,7 +294,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     }];
     
     [self.screenshotBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.equalTo(self.mas_trailing).offset(-25);
+        make.right.equalTo(self.mas_right).offset(-25);
         make.centerY.equalTo(self.mas_centerY);
         make.width.height.mas_equalTo(37);
     }];
@@ -581,12 +581,12 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_FullScreen) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-               make.trailing.equalTo(self.mas_trailing).offset(-69);
+               make.right.equalTo(self.mas_right).offset(-69);
             }];
         }else
         {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.trailing.mas_equalTo(self.mas_trailing).offset(-25);
+                make.right.mas_equalTo(self.mas_right).offset(-25);
             }];
         }
     }
@@ -594,12 +594,12 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_FullScreen_L) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.trailing.equalTo(self.mas_trailing).offset(-69);
+                make.right.equalTo(self.mas_right).offset(-69);
             }];
         }else
         {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.trailing.mas_equalTo(self.mas_trailing).offset(-25);
+                make.right.mas_equalTo(self.mas_right).offset(-25);
             }];
         }
     }
