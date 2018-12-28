@@ -270,7 +270,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self.totalTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(0);
         make.centerY.equalTo(self.startBtn.mas_centerY);
-        make.width.mas_equalTo(86);
+        make.width.mas_equalTo(76);
     }];
     
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -952,7 +952,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         _totalTimeLabel               = [[UILabel alloc] init];
         _totalTimeLabel.textColor     = [UIColor whiteColor];
         _totalTimeLabel.font          = [UIFont systemFontOfSize:9.0f];
-        _totalTimeLabel.textAlignment = NSTextAlignmentCenter;
+        _totalTimeLabel.textAlignment = NSTextAlignmentRight;
     }
     return _totalTimeLabel;
 }
