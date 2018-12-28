@@ -260,30 +260,32 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     //        make.width.mas_equalTo(43);
     //    }];
     
+    
     [self.fullScreenBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(45);
         make.trailing.equalTo(self.bottomImageView.mas_trailing).offset(-5);
         make.centerY.equalTo(self.startBtn.mas_centerY);
     }];
     
+    [self.totalTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);
+        make.centerY.equalTo(self.startBtn.mas_centerY);
+        make.width.mas_equalTo(86);
+    }];
+    
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.startBtn.mas_trailing).offset(4);
-        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);
+        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);
         make.centerY.equalTo(self.startBtn.mas_centerY);
     }];
     
     [self.videoSlider mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.startBtn.mas_trailing).offset(4);
-        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);
+        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);
         make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);
         make.height.mas_equalTo(30);
     }];
     
-    [self.totalTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);
-        make.top.equalTo(self.progressView).offset(1);
-        make.width.mas_equalTo(86);
-    }];
     
     [self.lockBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.mas_leading).offset(15);
@@ -579,7 +581,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_FullScreen) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-               make.trailing.equalTo(self.mas_trailing).offset(-54);
+               make.trailing.equalTo(self.mas_trailing).offset(-100);
             }];
         }else
         {
@@ -592,7 +594,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_FullScreen_L) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.trailing.equalTo(self.mas_trailing).offset(-54);
+                make.trailing.equalTo(self.mas_trailing).offset(-100);
             }];
         }else
         {
@@ -645,12 +647,15 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         make.width.height.mas_equalTo(50);
     }];
     
+    
+    
+    
     [self.progressView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.nextBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY);
+        make.leading.equalTo(self.nextBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY);
         
     }];
     [self.videoSlider mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.nextBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);        make.height.mas_equalTo(30);
+        make.leading.equalTo(self.nextBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);        make.height.mas_equalTo(30);
     }];
     
 }
@@ -687,10 +692,10 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         make.width.height.mas_equalTo(40);
     }];
     
-    [self.progressView mas_remakeConstraints:^(MASConstraintMaker *make) {        make.leading.equalTo(self.startBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY);
+    [self.progressView mas_remakeConstraints:^(MASConstraintMaker *make) {        make.leading.equalTo(self.startBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY);
         
     }];
-    [self.videoSlider mas_remakeConstraints:^(MASConstraintMaker *make) {        make.leading.equalTo(self.startBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);        make.height.mas_equalTo(30);
+    [self.videoSlider mas_remakeConstraints:^(MASConstraintMaker *make) {        make.leading.equalTo(self.startBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);        make.height.mas_equalTo(30);
         
     }];
     
