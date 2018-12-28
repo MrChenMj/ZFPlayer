@@ -268,20 +268,20 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     }];
     
     [self.totalTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(-4);
+        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(0);
         make.centerY.equalTo(self.startBtn.mas_centerY);
         make.width.mas_equalTo(86);
     }];
     
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.startBtn.mas_trailing).offset(4);
-        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);
+        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(0);
         make.centerY.equalTo(self.startBtn.mas_centerY);
     }];
     
     [self.videoSlider mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.startBtn.mas_trailing).offset(4);
-        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);
+        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(0);
         make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);
         make.height.mas_equalTo(30);
     }];
@@ -294,7 +294,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     }];
     
     [self.screenshotBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.equalTo(self.mas_trailing);
+        make.trailing.equalTo(self.mas_trailing).offset(-25);
         make.centerY.equalTo(self.mas_centerY);
         make.width.height.mas_equalTo(37);
     }];
@@ -581,12 +581,12 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_FullScreen) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-               make.trailing.equalTo(self.mas_trailing).offset(-100);
+               make.trailing.equalTo(self.mas_trailing).offset(-69);
             }];
         }else
         {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.trailing.mas_equalTo(self.mas_trailing).offset(0);
+                make.trailing.mas_equalTo(self.mas_trailing).offset(-25);
             }];
         }
     }
@@ -594,12 +594,12 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_FullScreen_L) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.trailing.equalTo(self.mas_trailing).offset(-100);
+                make.trailing.equalTo(self.mas_trailing).offset(-69);
             }];
         }else
         {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.trailing.mas_equalTo(self.mas_trailing).offset(0);
+                make.trailing.mas_equalTo(self.mas_trailing).offset(-25);
             }];
         }
     }
@@ -651,11 +651,11 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     
     
     [self.progressView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.nextBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY);
+        make.leading.equalTo(self.nextBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(0);        make.centerY.equalTo(self.startBtn.mas_centerY);
         
     }];
     [self.videoSlider mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.nextBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);        make.height.mas_equalTo(30);
+        make.leading.equalTo(self.nextBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(0);        make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);        make.height.mas_equalTo(30);
     }];
     
 }
@@ -692,10 +692,10 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         make.width.height.mas_equalTo(40);
     }];
     
-    [self.progressView mas_remakeConstraints:^(MASConstraintMaker *make) {        make.leading.equalTo(self.startBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY);
+    [self.progressView mas_remakeConstraints:^(MASConstraintMaker *make) {        make.leading.equalTo(self.startBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(0);        make.centerY.equalTo(self.startBtn.mas_centerY);
         
     }];
-    [self.videoSlider mas_remakeConstraints:^(MASConstraintMaker *make) {        make.leading.equalTo(self.startBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);        make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);        make.height.mas_equalTo(30);
+    [self.videoSlider mas_remakeConstraints:^(MASConstraintMaker *make) {        make.leading.equalTo(self.startBtn.mas_trailing).offset(4);        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(0);        make.centerY.equalTo(self.startBtn.mas_centerY).offset(-1);        make.height.mas_equalTo(30);
         
     }];
     
@@ -952,7 +952,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         _totalTimeLabel               = [[UILabel alloc] init];
         _totalTimeLabel.textColor     = [UIColor whiteColor];
         _totalTimeLabel.font          = [UIFont systemFontOfSize:9.0f];
-        _totalTimeLabel.textAlignment = NSTextAlignmentRight;
+        _totalTimeLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _totalTimeLabel;
 }
