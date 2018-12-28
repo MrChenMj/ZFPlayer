@@ -579,7 +579,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_FullScreen) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-               make.trailing.equalTo(self.mas_trailing).offset(-44);
+               make.trailing.equalTo(self.mas_trailing).offset(-54);
             }];
         }else
         {
@@ -592,7 +592,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (IS_FullScreen_L) {
         if (orientation == UIDeviceOrientationLandscapeRight || orientation == UIDeviceOrientationPortraitUpsideDown) {
             [self.screenshotBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.trailing.equalTo(self.mas_trailing).offset(-44);
+                make.trailing.equalTo(self.mas_trailing).offset(-54);
             }];
         }else
         {
@@ -946,7 +946,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (!_totalTimeLabel) {
         _totalTimeLabel               = [[UILabel alloc] init];
         _totalTimeLabel.textColor     = [UIColor whiteColor];
-        _totalTimeLabel.font          = [UIFont systemFontOfSize:12.0f];
+        _totalTimeLabel.font          = [UIFont systemFontOfSize:9.0f];
         _totalTimeLabel.textAlignment = NSTextAlignmentRight;
     }
     return _totalTimeLabel;
